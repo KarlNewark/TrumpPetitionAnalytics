@@ -1,0 +1,93 @@
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+<div class="mdl-grid">
+
+
+    <div class="mdl-cell mdl-cell--4-col data-box data-box-indigo">
+        <div class="text-center ">
+            <h1>Total Signatures</h1>
+            <p>{{total | number}}</p>
+        </div>
+    </div>
+    <div class="mdl-cell mdl-cell--4-col data-box data-box-teal">
+        <div class="text-center ">
+            <h1>Total Non-UK Signatures</h1>
+            <p>{{worldTotal | number}} </p>
+        </div>
+    </div>
+    <div class="mdl-cell mdl-cell--4-col data-box data-box-red">
+        <div class="text-center ">
+            <h1>Total UK Signatures</h1>
+            <p>{{ukTotal | number}}</p>
+        </div>
+    </div>
+
+
+</div>
+<div class="mdl-grid">
+
+
+
+
+    <div class="mdl-cell mdl-cell--12-col">
+        <div class="mdl-cell mdl-cell--12-col table-title text-center table-title-green">
+            Top Constituencies 
+        </div>
+        <table class="mdl-data-table mdl-js-data-table">
+            <thead>
+                <tr>
+                    <th class="mdl-data-table__cell--non-numeric">Constituency</th>
+                    <th class="mdl-data-table__cell--non-numeric">MP</th>
+                    <th>Population</th>
+                    <th>Total signatures</th>
+                    <th>Signatures per person</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="con in top10">
+                    <td class="mdl-data-table__cell--non-numeric">{{con.name}}</td>
+                    <td class="mdl-data-table__cell--non-numeric">{{con.mp}}</td>
+                    <td>{{con.population | number}}</td>
+                    <td>{{con.signature_count | number}}</td>
+                    <td>{{(con.sigRating | number:4)*1}}</td>
+
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+<div class="mdl-grid">
+
+    <div class="mdl-cell mdl-cell--12-col">
+            <div class="mdl-cell mdl-cell--12-col table-title text-center table-title-brown">
+        Slackers 
+    </div>
+        <table class="mdl-data-table mdl-js-data-table">
+            <thead>
+                <tr>
+                    <th class="mdl-data-table__cell--non-numeric">Constituency</th>
+                    <th class="mdl-data-table__cell--non-numeric">MP</th>
+                    <th>Population</th>
+                    <th>Total signatures</th>
+                    <th>Signatures per person</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="con in bottom10 | orderBy:'-'">
+                    <td class="mdl-data-table__cell--non-numeric">{{con.name}}</td>
+                    <td class="mdl-data-table__cell--non-numeric">{{con.mp}}</td>
+                    <td>{{con.population | number}}</td>
+                    <td>{{con.signature_count | number}}</td>
+                    <td>{{(con.sigRating | number:4)*1}}</td>
+
+                </tr>
+
+            </tbody>
+
+
+        </table>
+    </div>
+</div>
